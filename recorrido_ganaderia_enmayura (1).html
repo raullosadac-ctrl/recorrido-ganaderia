@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recorrido Virtual - Ganadería Enmayura</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#f4f6f3;
+}
+
+header{
+    background:#2e7d32;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+header h1{
+    margin:0;
+}
+
+.intro{
+    text-align:center;
+    padding:20px;
+    background:white;
+}
+
+.mapa{
+    position:relative;
+    max-width:1200px;
+    margin:30px auto;
+    padding:30px;
+    background:#e8f5e9;
+    border-radius:15px;
+}
+
+.mapa h2{
+    text-align:center;
+    color:#1b5e20;
+}
+
+.ruta{
+    display:grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+    margin-top:30px;
+}
+
+.estacion{
+    background:white;
+    border-radius:15px;
+    padding:25px;
+    text-align:center;
+    cursor:pointer;
+    transition:.3s;
+    box-shadow:0 4px 10px rgba(0,0,0,.1);
+}
+
+.estacion:hover{
+    transform:translateY(-5px);
+    background:#c8e6c9;
+}
+
+.icono{
+    font-size:50px;
+}
+
+.estacion h3{
+    color:#2e7d32;
+}
+
+.modal{
+    display:none;
+    position:fixed;
+    z-index:1000;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.6);
+}
+
+.modal-content{
+    background:white;
+    width:80%;
+    max-width:800px;
+    margin:50px auto;
+    padding:30px;
+    border-radius:15px;
+    position:relative;
+}
+
+.cerrar{
+    position:absolute;
+    top:15px;
+    right:20px;
+    font-size:28px;
+    cursor:pointer;
+    color:red;
+}
+
+footer{
+    margin-top:30px;
+    text-align:center;
+    background:#2e7d32;
+    color:white;
+    padding:15px;
+}
+
+ul{
+    line-height:1.8;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🐄 Recorrido Virtual SST</h1>
+<h2>Ganadería Enmayura</h2>
+</header>
+
+<div class="intro">
+<h2>Bienvenido</h2>
+<p>
+Durante este recorrido identificarás los principales peligros y riesgos laborales presentes en las actividades diarias de la ganadería.
+Haz clic sobre cada estación para explorarla.
+</p>
+</div>
+
+<div class="mapa">
+
+<h2>🗺️ Mapa Interactivo de la Finca</h2>
+
+<div class="ruta">
+
+<div class="estacion" onclick="abrirModal('mecanico')">
+<div class="icono">🐂</div>
+<h3>Corrales</h3>
+<p>Peligro Mecánico</p>
+</div>
+
+<div class="estacion" onclick="abrirModal('biomecanico')">
+<div class="icono">📦</div>
+<h3>Bodega</h3>
+<p>Peligro Biomecánico</p>
+</div>
+
+<div class="estacion" onclick="abrirModal('locativo')">
+<div class="icono">🚶</div>
+<h3>Potreros</h3>
+<p>Peligro Locativo</p>
+</div>
+
+<div class="estacion" onclick="abrirModal('biologico')">
+<div class="icono">🦠</div>
+<h3>Establo</h3>
+<p>Peligro Biológico</p>
+</div>
+
+<div class="estacion" onclick="abrirModal('fisico')">
+<div class="icono">☀️</div>
+<h3>Campo y Maquinaria</h3>
+<p>Peligro Físico</p>
+</div>
+
+<div class="estacion" onclick="abrirModal('quimico')">
+<div class="icono">🧪</div>
+<h3>Almacén Veterinario</h3>
+<p>Peligro Químico</p>
+</div>
+
+</div>
+</div>
+
+<!-- MECANICO -->
+
+<div id="mecanico" class="modal">
+<div class="modal-content">
+<span class="cerrar" onclick="cerrarModal('mecanico')">&times;</span>
+
+<h2>🐂 Corrales y Manejo del Ganado</h2>
+
+<p>
+Al ingresar a los corrales, los trabajadores realizan actividades de alimentación,
+vacunación y movilización del ganado.
+</p>
+
+<h3>⚠️ Riesgo Mecánico</h3>
+
+<ul>
+<li>Patadas.</li>
+<li>Pisotones.</li>
+<li>Golpes y empujones.</li>
+<li>Fracturas y lesiones.</li>
+</ul>
+
+<h3>✅ Prevención</h3>
+
+<ul>
+<li>Mantener distancia segura.</li>
+<li>Utilizar mangas y corrales.</li>
+<li>Evitar movimientos bruscos.</li>
+</ul>
+
+</div>
+</div>
+
+<!-- BIOMECANICO -->
+
+<div id="biomecanico" class="modal">
+<div class="modal-content">
+<span class="cerrar" onclick="cerrarModal('biomecanico')">&times;</span>
+
+<h2>📦 Bodega de Concentrados</h2>
+
+<h3>⚠️ Riesgo Biomecánico</h3>
+
+<p>
+El levantamiento incorrecto de cargas puede generar lesiones musculares y problemas de espalda.
+</p>
+
+<h3>✅ Prevención</h3>
+
+<ul>
+<li>Flexionar rodillas.</li>
+<li>Espalda recta.</li>
+<li>Solicitar ayuda para cargas pesadas.</li>
+</ul>
+
+</div>
+</div>
+
+<!-- LOCATIVO -->
+
+<div id="locativo" class="modal">
+<div class="modal-content">
+<span class="cerrar" onclick="cerrarModal('locativo')">&times;</span>
+
+<h2>🚶 Caminos y Potreros</h2>
+
+<h3>⚠️ Riesgo Locativo</h3>
+
+<ul>
+<li>Pisos húmedos.</li>
+<li>Terrenos irregulares.</li>
+<li>Charcos y obstáculos.</li>
+</ul>
+
+<h3>✅ Prevención</h3>
+
+<ul>
+<li>Utilizar botas antideslizantes.</li>
+<li>Caminar con precaución.</li>
+<li>Reportar condiciones inseguras.</li>
+</ul>
+
+</div>
+</div>
+
+<!-- BIOLOGICO -->
+
+<div id="biologico" class="modal">
+<div class="modal-content">
+<span class="cerrar" onclick="cerrarModal('biologico')">&times;</span>
+
+<h2>🦠 Área de Limpieza y Sanidad Animal</h2>
+
+<h3>⚠️ Riesgo Biológico</h3>
+
+<p>
+El contacto con animales, residuos y fluidos puede transmitir infecciones y zoonosis.
+</p>
+
+<h3>✅ Prevención</h3>
+
+<ul>
+<li>Uso de guantes.</li>
+<li>Lavado frecuente de manos.</li>
+<li>Vacunación y controles médicos.</li>
+</ul>
+
+</div>
+</div>
+
+<!-- FISICO -->
+
+<div id="fisico" class="modal">
+<div class="modal-content">
+<span class="cerrar" onclick="cerrarModal('fisico')">&times;</span>
+
+<h2>☀️ Campo Abierto y Maquinaria</h2>
+
+<h3>⚠️ Riesgo Físico</h3>
+
+<ul>
+<li>Radiación solar.</li>
+<li>Altas temperaturas.</li>
+<li>Ruido de maquinaria agrícola.</li>
+</ul>
+
+<h3>✅ Prevención</h3>
+
+<ul>
+<li>Protector solar.</li>
+<li>Hidratación constante.</li>
+<li>Protección auditiva.</li>
+</ul>
+
+</div>
+</div>
+
+<!-- QUIMICO -->
+
+<div id="quimico" class="modal">
+<div class="modal-content">
+<span class="cerrar" onclick="cerrarModal('quimico')">&times;</span>
+
+<h2>🧪 Almacén Veterinario</h2>
+
+<h3>⚠️ Riesgo Químico</h3>
+
+<ul>
+<li>Desinfectantes.</li>
+<li>Medicamentos veterinarios.</li>
+<li>Inhalación de vapores.</li>
+</ul>
+
+<h3>✅ Prevención</h3>
+
+<ul>
+<li>Leer etiquetas.</li>
+<li>Usar guantes y mascarilla.</li>
+<li>Mantener ventilación adecuada.</li>
+</ul>
+
+</div>
+</div>
+
+<footer>
+✅ Has llegado al final del recorrido virtual de seguridad de la Ganadería Enmayura.
+</footer>
+
+<script>
+
+function abrirModal(id){
+document.getElementById(id).style.display="block";
+}
+
+function cerrarModal(id){
+document.getElementById(id).style.display="none";
+}
+
+window.onclick=function(event){
+let modales=document.getElementsByClassName("modal");
+
+for(let i=0;i<modales.length;i++){
+if(event.target===modales[i]){
+modales[i].style.display="none";
+}
+}
+}
+
+</script>
+
+</body>
+</html>
